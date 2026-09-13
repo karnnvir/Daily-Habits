@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Karla:wght@400;500;700&display=swap">
+  <style>
+    :root{
+      --bg: oklch(97% 0.014 85);
+      --surface: oklch(99% 0.006 85);
+      --ink: oklch(23% 0.02 50);
+      --muted: oklch(52% 0.02 55);
+      --border: oklch(89% 0.014 70);
+      --flame: oklch(64% 0.19 45);
+      --bp: oklch(64% 0.14 78);
+      --bp-tint: oklch(94% 0.03 78);
+      --gj: oklch(64% 0.14 262);
+      --gj-tint: oklch(94% 0.025 262);
+      --bl: oklch(64% 0.14 165);
+      --bl-tint: oklch(94% 0.03 165);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: var(--bp); }
+    a:hover { color: var(--bl); }
+    .bar { border-radius: 4px 4px 0 0; }
+  </style>
+</helmet>
+
+<div style="width:390px;height:980px;position:relative;overflow:hidden;background:var(--bg);font-family:'Karla',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);">
+
+  <div style="position:absolute;inset:0 0 76px 0;overflow-y:auto;padding:50px 20px 24px 20px;display:flex;flex-direction:column;gap:18px;">
+
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <span style="font-family:'Spectral',Georgia,serif;font-size:22px;font-weight:600;">Progress</span>
+      <span style="font-size:12px;color:var(--muted);">How each pillar is growing</span>
+    </div>
+
+    <!-- tab switcher -->
+    <div style="display:flex;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:3px;">
+      <div style="flex:1;text-align:center;padding:7px 0;border-radius:9px;background:var(--ink);color:var(--bg);font-size:12px;font-weight:700;">Week</div>
+      <div style="flex:1;text-align:center;padding:7px 0;border-radius:9px;color:var(--muted);font-size:12px;font-weight:600;">Month</div>
+      <div style="flex:1;text-align:center;padding:7px 0;border-radius:9px;color:var(--muted);font-size:12px;font-weight:600;">Year</div>
+    </div>
+
+    <!-- Growth chart -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:'Spectral',Georgia,serif;font-weight:600;font-size:14px;">Growth</span>
+        <span style="font-size:11px;font-weight:700;color:var(--bp);background:var(--bp-tint);padding:2px 8px;border-radius:8px;">115 pts this week</span>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:8px;height:72px;">
+        <div class="bar" style="flex:1;height:30px;background:var(--bp-tint);"></div>
+        <div class="bar" style="flex:1;height:45px;background:var(--bp-tint);"></div>
+        <div class="bar" style="flex:1;height:20px;background:var(--bp-tint);"></div>
+        <div class="bar" style="flex:1;height:60px;background:var(--bp-tint);"></div>
+        <div class="bar" style="flex:1;height:50px;background:var(--bp-tint);"></div>
+        <div class="bar" style="flex:1;height:72px;background:var(--bp);"></div>
+        <div class="bar" style="flex:1;height:65px;background:var(--bp);"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);">
+        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+      </div>
+    </div>
+
+    <!-- Career chart -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:'Spectral',Georgia,serif;font-weight:600;font-size:14px;">Career</span>
+        <span style="font-size:11px;font-weight:700;color:var(--gj);background:var(--gj-tint);padding:2px 8px;border-radius:8px;">35 pts this week</span>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:8px;height:72px;">
+        <div class="bar" style="flex:1;height:12px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:0px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:26px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:15px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:0px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:20px;background:var(--gj-tint);"></div>
+        <div class="bar" style="flex:1;height:30px;background:var(--gj);"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);">
+        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+      </div>
+    </div>
+
+    <!-- Wellbeing chart -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:'Spectral',Georgia,serif;font-weight:600;font-size:14px;">Wellbeing</span>
+        <span style="font-size:11px;font-weight:700;color:var(--bl);background:var(--bl-tint);padding:2px 8px;border-radius:8px;">150 pts this week</span>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:8px;height:72px;">
+        <div class="bar" style="flex:1;height:50px;background:var(--bl-tint);"></div>
+        <div class="bar" style="flex:1;height:55px;background:var(--bl-tint);"></div>
+        <div class="bar" style="flex:1;height:40px;background:var(--bl-tint);"></div>
+        <div class="bar" style="flex:1;height:60px;background:var(--bl-tint);"></div>
+        <div class="bar" style="flex:1;height:45px;background:var(--bl-tint);"></div>
+        <div class="bar" style="flex:1;height:65px;background:var(--bl);"></div>
+        <div class="bar" style="flex:1;height:72px;background:var(--bl);"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);">
+        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+      </div>
+    </div>
+
+    <!-- Self control -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+      <div style="display:flex;flex-direction:column;gap:2px;margin:0 2px;">
+        <span style="font-family:'Spectral',Georgia,serif;font-weight:600;font-size:16px;">Self-Control</span>
+        <span style="font-size:11px;color:var(--muted);">the fewer taps here, the better</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 16px;">
+        <div style="width:44px;height:44px;border-radius:12px;background:var(--bl-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="2.5" width="9" height="17" rx="2"/><path d="M11 16.5h2"/><path d="M3.5 3.5l17 17"/></svg>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+          <span style="font-size:14px;font-weight:500;">Screen-free evenings</span>
+          <span style="font-size:11px;color:var(--muted);">best run: 27 days</span>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Spectral',Georgia,serif;font-size:20px;font-weight:700;color:var(--bl);">18</div>
+          <div style="font-size:10px;color:var(--muted);">days clean</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 16px;">
+        <div style="width:44px;height:44px;border-radius:12px;background:var(--bl-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+          <span style="font-size:14px;font-weight:500;">Trading discipline</span>
+          <span style="font-size:11px;color:var(--muted);">best run: 14 days</span>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Spectral',Georgia,serif;font-size:20px;font-weight:700;color:var(--bl);">9</div>
+          <div style="font-size:10px;color:var(--muted);">days clean</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom nav -->
+  <div style="position:absolute;left:0;right:0;bottom:0;height:76px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding-bottom:12px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10.5V20h4.5v-5.5h3V20H18v-9.5"/></svg>
+      <span style="font-size:10px;">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="6.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="17.5" r="1.4" fill="currentColor" stroke="none"/><path d="M9 6.5h11M9 12h11M9 17.5h11"/></svg>
+      <span style="font-size:10px;">Habits</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink);">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11M10 20V5M16 20v-8M22 20H2"/></svg>
+      <span style="font-size:10px;font-weight:600;">Progress</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

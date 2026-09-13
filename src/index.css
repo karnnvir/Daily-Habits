@@ -1,0 +1,796 @@
+:root {
+  --bg: oklch(97% 0.014 85);
+  --surface: oklch(99% 0.006 85);
+  --ink: oklch(23% 0.02 50);
+  --muted: oklch(52% 0.02 55);
+  --border: oklch(89% 0.014 70);
+  --flame: oklch(64% 0.19 45);
+  --bp: oklch(64% 0.14 78);
+  --bp-tint: oklch(94% 0.03 78);
+  --gj: oklch(64% 0.14 262);
+  --gj-tint: oklch(94% 0.025 262);
+  --bl: oklch(64% 0.14 165);
+  --bl-tint: oklch(94% 0.03 165);
+  font-family: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+a {
+  color: var(--bp);
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  font-family: "Spectral", Georgia, serif;
+  margin: 0;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 520px;
+  margin: 0 auto;
+  padding-bottom: 84px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.screen {
+  padding: 24px 20px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subtle {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 3px 0 0;
+}
+
+/* Dashboard */
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dashboard-header h1 {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pillar-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pillar-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.pillar-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.pillar-card-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.pillar-card-name {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pillar-card-level {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 8px;
+}
+
+.pillar-card-bar {
+  height: 8px;
+  border-radius: 6px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.pillar-card-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.pillar-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.pillar-growth .pillar-card-icon,
+.pillar-growth.pillar-card-level {
+  background: var(--bp-tint);
+  color: var(--bp);
+}
+.pillar-growth .pillar-card-level {
+  background: var(--bp-tint);
+  color: var(--bp);
+}
+.pillar-growth .pillar-card-bar-fill {
+  background: var(--bp);
+}
+
+.pillar-career .pillar-card-icon {
+  background: var(--gj-tint);
+  color: var(--gj);
+}
+.pillar-career .pillar-card-level {
+  background: var(--gj-tint);
+  color: var(--gj);
+}
+.pillar-career .pillar-card-bar-fill {
+  background: var(--gj);
+}
+
+.pillar-wellbeing .pillar-card-icon {
+  background: var(--bl-tint);
+  color: var(--bl);
+}
+.pillar-wellbeing .pillar-card-level {
+  background: var(--bl-tint);
+  color: var(--bl);
+}
+.pillar-wellbeing .pillar-card-bar-fill {
+  background: var(--bl);
+}
+
+/* Screen header (Habits / Progress / Manage) */
+
+.screen-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.screen-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.header-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 6px 2px;
+}
+
+/* Pillar sections (Habits + Manage) */
+
+.pillar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pillar-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 2px 0;
+}
+
+.pillar-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.pillar-growth .pillar-dot {
+  background: var(--bp);
+}
+.pillar-career .pillar-dot {
+  background: var(--gj);
+}
+.pillar-wellbeing .pillar-dot {
+  background: var(--bl);
+}
+
+.pillar-section-name {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pillar-section-level {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.pillar-growth .pillar-section-level {
+  color: var(--bp);
+  background: var(--bp-tint);
+}
+.pillar-career .pillar-section-level {
+  color: var(--gj);
+  background: var(--gj-tint);
+}
+.pillar-wellbeing .pillar-section-level {
+  color: var(--bl);
+  background: var(--bl-tint);
+}
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Habit rows */
+
+.habit-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.habit-row-done {
+  padding: 11px 14px;
+}
+
+.habit-row-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.habit-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--border);
+  color: var(--muted);
+}
+
+.pillar-growth .habit-icon {
+  background: var(--bp-tint);
+  color: var(--bp);
+}
+.pillar-career .habit-icon {
+  background: var(--gj-tint);
+  color: var(--gj);
+}
+.pillar-wellbeing .habit-icon {
+  background: var(--bl-tint);
+  color: var(--bl);
+}
+
+.habit-row-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.habit-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.habit-streak {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--flame);
+}
+
+.habit-no-streak {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.habit-activities {
+  font-size: 10.5px;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.habit-points-chip {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+.habit-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar-growth .habit-check {
+  background: var(--bp);
+}
+.pillar-career .habit-check {
+  background: var(--gj);
+}
+.pillar-wellbeing .habit-check {
+  background: var(--bl);
+}
+
+.habit-tiers {
+  display: flex;
+  gap: 8px;
+  padding-left: 48px;
+}
+
+.tier-pill {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--surface);
+}
+
+.tier-pill:active {
+  background: var(--border);
+}
+
+/* Progress charts */
+
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chart-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-card-name {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.chart-card-total {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.pillar-growth .chart-card-total {
+  color: var(--bp);
+  background: var(--bp-tint);
+}
+.pillar-career .chart-card-total {
+  color: var(--gj);
+  background: var(--gj-tint);
+}
+.pillar-wellbeing .chart-card-total {
+  color: var(--bl);
+  background: var(--bl-tint);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 72px;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.pillar-growth .chart-bar {
+  background: var(--bp);
+}
+.pillar-career .chart-bar {
+  background: var(--gj);
+}
+.pillar-wellbeing .chart-bar {
+  background: var(--bl);
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* Self control */
+
+.self-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.self-control h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clean-streak-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.clean-streak-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clean-streak-count {
+  text-align: right;
+}
+
+.clean-streak-value {
+  font-family: "Spectral", Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bl);
+}
+
+.slip-button {
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* Manage Habits */
+
+.add-habit-form {
+  display: flex;
+  gap: 8px;
+}
+
+.add-habit-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 14px;
+}
+
+.add-habit-form select {
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+}
+
+.add-habit-form button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.manage-habit-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.manage-habit-row.expanded {
+  border-color: var(--ink);
+}
+
+.manage-habit-summary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.manage-habit-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 14px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 10px;
+}
+
+.manage-habit-detail input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.activity-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 8px 7px 13px;
+  font-size: 12.5px;
+}
+
+.activity-chip button {
+  border: none;
+  color: var(--muted);
+  display: flex;
+}
+
+.activity-chip-add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px dashed var(--border);
+  border-radius: 20px;
+  padding: 4px 6px 4px 13px;
+}
+
+.activity-chip-add input {
+  border: none;
+  background: none;
+  font-size: 12.5px;
+  width: 110px;
+}
+
+.activity-chip-add button {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 4px 8px;
+}
+
+.delete-habit-button {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(58% 0.16 25);
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+}
+
+/* Login */
+
+.login-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-card h1 {
+  font-size: 26px;
+}
+
+.login-card .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.login-card .field input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 15px;
+}
+
+.error-text {
+  color: oklch(58% 0.16 25);
+  font-size: 13px;
+  margin: 10px 0 0;
+}
+
+.login-submit {
+  margin-top: 20px;
+  padding: 13px;
+  border-radius: 12px;
+  border: none;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.login-submit:disabled {
+  opacity: 0.6;
+}
+
+/* Bottom nav */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  max-width: 520px;
+  margin: 0 auto;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 0;
+  flex: 1;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.bottom-nav a.active {
+  color: var(--ink);
+  font-weight: 600;
+}

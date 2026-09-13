@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Locked to a single owner account - update this email if you fork this
+    // for your own Firebase project and your own sign-in.
+    match /{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.email == "s.karanvir@gmail.com";
+    }
+  }
+}
